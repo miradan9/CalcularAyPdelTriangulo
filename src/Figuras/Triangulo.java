@@ -1,30 +1,40 @@
 package Figuras;
 //Valeria Danae Aguayo Miranda
-public class Triangulo extends Figura{
-    private int base;
-    private int altura;
-    private int lado1;
-    private int lado2;
-    private int lado3;
-    public Triangulo(int base, int altura, int lado1, int lado2, int lado3) {
-        this.base = base;
-        this.altura = altura;
+
+public class Triangulo extends Figura {
+    private double lado3;
+    //private double altura;
+    private double area;
+    private double lado1;
+    private double lado2;
+    private double perimetro;
+
+    public Triangulo(double lado3, double lado1, double lado2) {
+        this.lado3 = lado3;
         this.lado1 = lado1;
         this.lado2 = lado2;
-        this.lado3 = lado3;
-        calcularArea();
-        calcularPerimetro();
     }
-
     @Override
-    public void calcularArea() {
-            double a=base *altura;
-            area = (a / 2);
+    public double calcularArea() {
+        //area=(base*altura)/2;
+        double suma = (lado1 + lado2 + lado3) / 2;
+        area=Math.sqrt((suma*(suma-lado1)*(suma-lado2)*(suma-lado3)));
+        return area;
     }
-
     @Override
-    public void calcularPerimetro() {
-                perimetro = lado1 + lado2 + lado3;
-            }
+    public double calcularPerimetro() {
+        perimetro = lado1 + lado2 + lado3;
+        return perimetro;
     }
+    @Override
+    public String toString() {
+        return "Triangulo{" +
+                "lado1=" + lado1 +
+                ", lado2=" + lado2 +
+                ", lado3=" + lado3 +
+                ", area=" + calcularArea() +
+                ", perimetro=" + calcularPerimetro() +
+                '}';
+    }
+}
 
